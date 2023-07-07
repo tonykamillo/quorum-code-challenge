@@ -1,0 +1,22 @@
+1. Discuss your solution’s time complexity. What tradeoffs did you make?
+
+	The solution's time complexity is linear O(n), because there is no nested loops or recursivity.
+	I just do one time iteration over every dataset needed in the solution. To achieve that I had to transform some datasets into dictionaries in order to access them by id in constant time O(1).
+	It allowed me making only one interation over vote_results dataset to count the vote types and set them to the fields num_supported_bills, num_opposed_bills, supporter_count and opposer_count in their respective output data format.
+
+
+2. How would you change your solution to account for future columns that might be
+requested, such as “Bill Voted On Date” or “Co-Sponsors”?
+
+	In order to make it flexible my approach uses csv.DictReader and csv.DictWriter to avoid positioning values issues, like a misindexing a value thinking I'm accessing right index to given value, but I'm not. Also, I'm reusing the dict item created by DictReader to add new necessary key/value pairs. Despite of it I could do something like config format expected for each output dataset and then use this config in the count_votes function to set the approprite value.
+	
+
+3. How would you change your solution if instead of receiving CSVs of data, you were given a
+list of legislators or bills that you should generate a CSV for?
+
+	For sure I would convert every single list item into a dict, making a list of dicts, then I would pass it to dump_csv function which is prepared to deal with list of dicts to generate to CSV file for a given list.
+
+
+4. How long did you spend working on the assignment?
+	
+	I have spent a few more than 2 hours
